@@ -17,11 +17,10 @@ resource "aws_lb_target_group_attachment" "mz_kafka_target_group_attachment" {
 
 # Create a network Load Balancer
 resource "aws_lb" "mz_kafka_lb" {
-  name                             = "mz-kafka-lb"
-  internal                         = true
-  load_balancer_type               = "network"
-  subnets                          = var.mz_kafka_brokers[*].subnet_id
-  enable_cross_zone_load_balancing = true
+  name               = "mz-kafka-lb"
+  internal           = true
+  load_balancer_type = "network"
+  subnets            = var.mz_kafka_brokers[*].subnet_id
   tags = {
     Name = "mz-kafka-lb"
   }
